@@ -1,222 +1,256 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Nova Browser</title>
-  <meta name="description" content="Download Nova Browser for Windows.">
-
+  <meta name="theme-color" content="#090a0d">
+  <meta name="description" content="Nova Browser — a simple desktop browser for Windows.">
+  <title>Nova Browser — Browse freely</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    :root {
+      color-scheme: dark;
+      --bg: #090a0d;
+      --panel: #111319;
+      --muted: #9a9eaa;
+      --line: rgba(255,255,255,.09);
+      --white: #f7f8fb;
     }
-
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
-      background: #08090b;
-      color: #f5f5f5;
-      font-family: Arial, sans-serif;
+      margin: 0;
+      min-height: 100vh;
+      color: var(--white);
+      background:
+        radial-gradient(ellipse at 50% 28%, rgba(91,104,145,.20), transparent 42%),
+        var(--bg);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
-
-    nav {
-      height: 75px;
-      padding: 0 8%;
+    a { color: inherit; }
+    .nav {
+      width: min(1100px, calc(100% - 48px));
+      height: 78px;
+      margin: auto;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-bottom: 1px solid #202126;
+      border-bottom: 1px solid var(--line);
     }
-
-    .logo {
-      font-size: 24px;
-      font-weight: 800;
-      letter-spacing: 3px;
-    }
-
-    nav a, footer a {
-      color: #aaa;
-      text-decoration: none;
-    }
-
-    nav a:hover, footer a:hover {
-      color: white;
-    }
-
-    .hero {
-      min-height: 680px;
-      padding: 100px 20px;
+    .brand {
       display: flex;
-      flex-direction: column;
-      justify-content: center;
       align-items: center;
-      text-align: center;
-      background: radial-gradient(ellipse at center, #191d29, #08090b 65%);
+      gap: 11px;
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: .19em;
     }
-
-    .app-icon {
-      width: 90px;
-      height: 90px;
-      border-radius: 25px;
-      background: linear-gradient(145deg, #292d3a, #111319);
-      border: 1px solid #454957;
+    .brand-mark {
+      width: 32px;
+      height: 32px;
       display: grid;
       place-items: center;
-      font-size: 48px;
-      font-weight: 800;
-      margin-bottom: 35px;
-      box-shadow: 0 15px 60px #000;
+      border: 1px solid rgba(255,255,255,.22);
+      border-radius: 10px;
+      background: linear-gradient(145deg, #303647, #12151d);
+      letter-spacing: 0;
     }
-
-    .tag {
-      color: #999;
-      font-size: 12px;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      margin-bottom: 20px;
-    }
-
-    h1 {
-      font-size: clamp(48px, 9vw, 85px);
-      letter-spacing: -5px;
-      margin-bottom: 20px;
-    }
-
-    .description {
-      color: #999;
-      max-width: 490px;
-      line-height: 1.8;
-      font-size: 16px;
-      margin-bottom: 35px;
-    }
-
-    .download {
-      display: inline-block;
-      padding: 17px 32px;
-      background: white;
-      color: #08090b;
-      border-radius: 9px;
-      font-weight: bold;
+    .nav-link {
+      color: #b8bbc5;
       text-decoration: none;
-      transition: 0.2s;
-    }
-
-    .download:hover {
-      background: #ccc;
-      transform: translateY(-3px);
-    }
-
-    .version {
-      color: #666;
-      font-size: 12px;
-      margin-top: 18px;
-    }
-
-    .features {
-      max-width: 950px;
-      margin: auto;
-      padding: 70px 20px 100px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 18px;
-    }
-
-    .feature {
-      background: #101115;
-      border: 1px solid #25262c;
-      border-radius: 14px;
-      padding: 30px;
-      transition: 0.2s;
-    }
-
-    .feature:hover {
-      border-color: #555;
-      transform: translateY(-4px);
-    }
-
-    .feature h2 {
-      font-size: 18px;
-      margin-bottom: 12px;
-    }
-
-    .feature p {
-      color: #888;
       font-size: 14px;
-      line-height: 1.7;
+      transition: color .2s;
     }
-
-    footer {
-      border-top: 1px solid #202126;
-      padding: 30px;
+    .nav-link:hover { color: white; }
+    main { overflow: hidden; }
+    .hero {
+      width: min(900px, calc(100% - 40px));
+      min-height: 610px;
+      margin: auto;
+      padding: 100px 0 90px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       text-align: center;
-      color: #666;
-      font-size: 13px;
+    }
+    .app-icon {
+      width: 92px;
+      height: 92px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 30px;
+      border: 1px solid rgba(255,255,255,.20);
+      border-radius: 27px;
+      background: linear-gradient(145deg, #303647, #11141c 72%);
+      box-shadow: 0 18px 65px rgba(0,0,0,.5), inset 0 1px rgba(255,255,255,.12);
+      font-size: 49px;
+      font-weight: 800;
+      letter-spacing: -.08em;
+    }
+    .eyebrow {
+      margin: 0 0 17px;
+      color: #aeb3c2;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(56px, 10vw, 94px);
+      line-height: .98;
+      letter-spacing: -.075em;
+    }
+    .subtitle {
+      max-width: 540px;
+      margin: 24px 0 32px;
+      color: var(--muted);
+      font-size: clamp(15px, 2vw, 17px);
       line-height: 1.8;
+    }
+    .actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .button {
+      min-height: 50px;
+      padding: 0 23px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border: 1px solid transparent;
+      border-radius: 10px;
+      background: #f5f6f8;
+      color: #090a0d;
+      font-size: 14px;
+      font-weight: 750;
+      text-decoration: none;
+      transition: transform .2s, background .2s, border-color .2s;
+    }
+    .button:hover { transform: translateY(-2px); background: #dfe2e8; }
+    .button.secondary {
+      color: #e6e8ee;
+      background: rgba(255,255,255,.04);
+      border-color: var(--line);
+    }
+    .button.secondary:hover { background: rgba(255,255,255,.09); }
+    .meta {
+      margin-top: 18px;
+      color: #777d8b;
+      font-size: 12px;
+    }
+    .features {
+      width: min(1000px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 30px 0 105px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .feature {
+      min-height: 160px;
+      padding: 25px;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      background: linear-gradient(145deg, rgba(255,255,255,.045), rgba(255,255,255,.018));
+    }
+    .feature-number {
+      color: #858c9e;
+      font-size: 11px;
+      letter-spacing: .15em;
+    }
+    .feature h2 { margin: 18px 0 9px; font-size: 17px; }
+    .feature p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.7; }
+    .footer {
+      min-height: 78px;
+      padding: 22px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border-top: 1px solid var(--line);
+      color: #777d8b;
+      font-size: 12px;
+      text-align: center;
+    }
+    .footer a { color: #bfc3cd; text-decoration: none; }
+    .footer a:hover { color: white; }
+    @media (max-width: 700px) {
+      .nav { width: calc(100% - 32px); height: 68px; }
+      .hero { min-height: 570px; padding-top: 75px; }
+      .features { grid-template-columns: 1fr; padding-bottom: 70px; }
+      .feature { min-height: auto; }
     }
   </style>
 </head>
-
 <body>
+  <header class="nav">
+    <div class="brand"><span class="brand-mark">N</span><span>NOVA</span></div>
+    <a class="nav-link" id="github-link" href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+  </header>
 
-  <nav>
-    <div class="logo">NOVA.</div>
+  <main>
+    <section class="hero">
+      <div class="app-icon" aria-label="Nova logo">N</div>
+      <p class="eyebrow">A fresh way to browse</p>
+      <h1>Meet Nova.</h1>
+      <p class="subtitle">
+        A simple desktop browser for exploring the web.
+        Clean design, a straightforward experience, and built for Windows.
+      </p>
+      <div class="actions">
+        <a class="button" id="download-button" href="https://drive.google.com/uc?export=download&id=1a_rD3_H29piFL4m3RdcBo5voGD-zolgh">
+          <span aria-hidden="true">↓</span> Download for Windows
+        </a>
+        <a class="button secondary" id="source-button" href="https://github.com/" target="_blank" rel="noopener noreferrer">
+          View source code ↗
+        </a>
+      </div>
+      <p class="meta">Version 1.0.0 · Windows · Free</p>
+    </section>
 
-    <a href="https://github.com/jurbergdmarkuss/Nova-Browser">
-      GitHub ↗
-    </a>
-  </nav>
+    <section class="features" aria-label="Nova features">
+      <article class="feature">
+        <span class="feature-number">01 / SIMPLE</span>
+        <h2>Easy to use</h2>
+        <p>A clean interface that keeps the focus on the websites you visit.</p>
+      </article>
+      <article class="feature">
+        <span class="feature-number">02 / DESKTOP</span>
+        <h2>Made for Windows</h2>
+        <p>Install Nova on your PC and launch it like any other desktop app.</p>
+      </article>
+      <article class="feature">
+        <span class="feature-number">03 / OPEN SOURCE</span>
+        <h2>Built in the open</h2>
+        <p>Explore the project and follow updates through its GitHub repository.</p>
+      </article>
+    </section>
+  </main>
 
-  <section class="hero">
-
-    <div class="app-icon">N</div>
-
-    <div class="tag">A new way to browse</div>
-
-    <h1>Meet Nova.</h1>
-
-    <p class="description">
-      A simple desktop browser for exploring the web.
-      Clean design. Simple experience. Built for Windows.
-    </p>
-
-    <a class="download"
-       href="https://drive.google.com/file/d/1a_rD3_H29piFL4m3RdcBo5voGD-zolgh/view?usp=sharing">
-       ↓ &nbsp; Download for Windows
-    </a>
-
-    <div class="version">
-      Version 1.0.0 · Windows · Free
-    </div>
-
-  </section>
-
-  <section class="features">
-
-    <div class="feature">
-      <h2>01 — Simple</h2>
-      <p>A clean interface designed to make browsing straightforward.</p>
-    </div>
-
-    <div class="feature">
-      <h2>02 — Desktop</h2>
-      <p>A standalone Windows application you can install on your PC.</p>
-    </div>
-
-    <div class="feature">
-      <h2>03 — Open source</h2>
-      <p>Explore the project and its source code on GitHub.</p>
-    </div>
-
-  </section>
-
-  <footer>
-    © 2026 Nova Browser · Built with Electron<br>
-    <a href="https://github.com/YOUR-USERNAME/YOUR-REPO">
-      View on GitHub
-    </a>
+  <footer class="footer">
+    <span>© 2026 Nova Browser</span>
+    <span>·</span>
+    <a id="footer-github" href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub</a>
+    <span>· Built with Electron</span>
   </footer>
 
+  <script>
+    // SET THESE THREE VALUES before publishing your website.
+    const GITHUB_REPOSITORY_URL = "https://github.com/YOUR-USERNAME/YOUR-REPO";
+
+    const githubLink = document.getElementById("github-link");
+    const sourceButton = document.getElementById("source-button");
+    const footerGithub = document.getElementById("footer-github");
+
+    githubLink.href = GITHUB_REPOSITORY_URL;
+    sourceButton.href = GITHUB_REPOSITORY_URL;
+    footerGithub.href = GITHUB_REPOSITORY_URL;
+
+  </script>
 </body>
 </html>
